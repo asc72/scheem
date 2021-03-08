@@ -1,0 +1,47 @@
+start =
+    expression
+
+expression =
+    list
+    / atom
+    /quote
+
+quote =
+    _ "'" _ first:expression _
+        {return first;}
+
+list =
+   _ "(" _ first:expression+ _ ")" _
+        {return first;}
+
+comment =
+    ";;" (!"\n" sourcechar)* "\n"
+    
+__ =
+    [\n,\t\v\f\u00A0\uFEFF ]
+
+_ =
+    (__ / comment)*
+    
+validchar =
+    [0-9a-zA-Z_?!+\-=@#$%^&*/.]
+
+number = 
+    sign:("-"/"+")? digits:[0-9]+
+    {
+        if(sign === "-"){
+            var x = -1;
+        }else
+        {
+        var x = 1;
+        }
+    return x*parseInt(digits.join(""), 10); }
+   
+sourcechar =
+    .
+    
+atom =
+    _ numbers:number _
+        { return numbers; }
+    / _ chars:validchar+ _
+        { return chars.join(""); }
