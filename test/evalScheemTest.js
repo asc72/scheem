@@ -49,6 +49,18 @@ suite('parse', function() {
             42
         );
     });
+    test('a negative number', function() {
+        assert.deepEqual(
+            parse('-42'),
+            -42
+        );
+    });
+    test('a decimal number', function() {
+        assert.deepEqual(
+            parse('4.2'),
+            4.2
+        );
+    });
     test('a variable', function() {
         assert.deepEqual(
             parse('x'),

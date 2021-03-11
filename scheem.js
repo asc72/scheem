@@ -12,7 +12,8 @@ var env = {
                'identity': function (x) { return x; },
                'addition':function (x,y,z) {return x + y+z;},
                'plusone': function (x) { return x + 1; },
-               'sin': function (x) { return Math.sin(x); }
+               'sin': function (x) { return Math.sin(x); },
+               'cos': function (x) { return Math.cos(x); }
                },
     outer: { }};
 
