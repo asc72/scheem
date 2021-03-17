@@ -27,7 +27,7 @@
   
  var editor = ace.edit("input");
  editor.setTheme("ace/theme/twilight");
- editor.getSession().setMode("ace/mode/clojure"); 
+ editor.getSession().setMode("ace/mode/scheme"); 
  
  editor.getSession().on('change', function(e) {
     var user_text = editor.getValue();
